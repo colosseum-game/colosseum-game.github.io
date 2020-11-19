@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Colosseum - Colosseum</title>
+        <title>Combat State Protocol - Colosseum</title>
         
         
 
@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="1.colosseum.html" class="active"><strong aria-hidden="true">1.</strong> Colosseum</a></li><li class="chapter-item expanded "><a href="2.inspirations.html"><strong aria-hidden="true">2.</strong> Inspirations</a></li><li class="chapter-item expanded "><a href="3.region_state_protocol.html"><strong aria-hidden="true">3.</strong> Region State Protocol</a></li><li class="chapter-item expanded "><a href="4.combat_state_protocol.html"><strong aria-hidden="true">4.</strong> Combat State Protocol</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="colosseum.html"><strong aria-hidden="true">1.</strong> Colosseum</a></li><li class="chapter-item expanded "><a href="inspirations.html"><strong aria-hidden="true">2.</strong> Inspirations</a></li><li class="chapter-item expanded "><a href="region_state_protocol.html"><strong aria-hidden="true">3.</strong> Region State Protocol</a></li><li class="chapter-item expanded "><a href="combat_state_protocol.html" class="active"><strong aria-hidden="true">4.</strong> Combat State Protocol</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -163,24 +163,64 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#colosseum" id="colosseum">Colosseum</a></h1>
-<p>Colosseum is an online multiplayer JRPG focused around a competition between players.
-Players create and develop several characters and go up against other players in combat.
-Players are ranked according to their skill level, with better performing players getting access to additional content such as locations, abilities, housing, and more.</p>
-<p>As a player increases in ranking their pool of possible challengers shrinks, and they're given access to larger arenas.
-Players are able to spectate other players at any time during matches, even as they wait for their own matches to begin.</p>
-<p>In order to acquire items and equipment for combat, players can go on expeditions together to find gear or gather materials for use in simple crafting.</p>
+                        <h1><a class="header" href="#combat-state-protocol" id="combat-state-protocol">Combat State Protocol</a></h1>
+<p>The Colosseum combat state protocol is made up of three things:</p>
+<ul>
+<li>The combat state itself</li>
+<li>The local known state</li>
+<li>Combat actions</li>
+</ul>
+<h2><a class="header" href="#combat-state" id="combat-state">Combat State</a></h2>
+<p>The combat state is the data which represents combat at a specific atomic timestep and encompasses the following information:</p>
+<ul>
+<li>TODO</li>
+</ul>
+<h2><a class="header" href="#local-known-state" id="local-known-state">Local Known State</a></h2>
+<p>Since an individual player doesn't have a comprehensive picture of the combat state at all times,
+there must exist a protocol for determining what a player does and doesn't know.
+This is required in order to omit data from what a player should have access to,
+such as an opponents health in the event that they shouldn't know it.</p>
+<p>Local known state describes this relationship.</p>
+<h2><a class="header" href="#actions" id="actions">Actions</a></h2>
+<p>Actions are the individual atomic operations which modify the combat state.</p>
+<p>The possible actions are defined as follows:</p>
+<ul>
+<li>EnterCombat</li>
+<li>ExitCombat</li>
+<li>Attack</li>
+<li>Ability</li>
+<li>Skip</li>
+<li>Forfeit</li>
+</ul>
+<h3><a class="header" href="#enter-combat" id="enter-combat">Enter Combat</a></h3>
+<p>Enter combat is passed to the state when one or more combatants enters the combat state.
+This is likely to happen at the start of combat, and in the case of expeditions, when a party member joins another in combat.</p>
+<h3><a class="header" href="#exit-combat" id="exit-combat">Exit Combat</a></h3>
+<p>Exit combat is passed to the state when one or more combatants exits the combat state.
+This is used in the event that a player disconnects, or during cinematic events such as boss transformations.</p>
+<h3><a class="header" href="#attack" id="attack">Attack</a></h3>
+<p>Attack is used when a combatant attempts to use the ability associated with their equipable.
+This will apply their equipable effects to the supplied targets as specified by their equipable.</p>
+<h3><a class="header" href="#ability" id="ability">Ability</a></h3>
+<p>Ability is used when a combatant attempts to use an ability that they've acquired.
+This ability will apply its effects to the targets supplied from its own specifications.</p>
+<h3><a class="header" href="#skip" id="skip">Skip</a></h3>
+<p>Skip does nothing in itself, but anything which modifies the state with each transformation will apply.</p>
+<h3><a class="header" href="#forfeit" id="forfeit">Forfeit</a></h3>
+<p>Forfeit is used when a party decides they want to end the game.
+The forfeiting party loses and the opposing party is given the win.
+The implications of this action are dependant on the context.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-
-                        
-                            <a rel="next" href="2.inspirations.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
+                            <a rel="prev" href="region_state_protocol.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
                             </a>
+                        
+
                         
 
                         <div style="clear: both"></div>
@@ -190,11 +230,11 @@ Players are able to spectate other players at any time during matches, even as t
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-
-                
-                    <a rel="next" href="2.inspirations.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
+                    <a rel="prev" href="region_state_protocol.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
                     </a>
+                
+
                 
             </nav>
 
