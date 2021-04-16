@@ -165,14 +165,14 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#colosseum" id="colosseum">Colosseum</a></h1>
+                        <h1 id="colosseum"><a class="header" href="#colosseum">Colosseum</a></h1>
 <p>Colosseum is an online multiplayer JRPG focused around a competition between players.
 Players create and develop several characters and go up against other players in combat.
 Players are ranked according to their skill level, with better performing players getting access to additional content such as locations, abilities, housing, and more.</p>
 <p>As a player increases in ranking their pool of possible challengers shrinks, and they're given access to larger arenas.
 Players are able to spectate other players at any time during matches, even as they wait for their own matches to begin.</p>
 <p>In order to acquire items and equipment for combat, players can go on expeditions together to find gear or gather materials for use in simple crafting.</p>
-<h1><a class="header" href="#inspirations" id="inspirations">Inspirations</a></h1>
+<h1 id="inspirations"><a class="header" href="#inspirations">Inspirations</a></h1>
 <p>CrossCode for its excellent music and futuristic themes,</p>
 <p>Disgaea for its lighthearted but dark themes and interesting content.</p>
 <p>Final Fantasy VII for some of the most iconic storytelling and music of its genre.</p>
@@ -181,44 +181,44 @@ Players are able to spectate other players at any time during matches, even as t
 <p>Persona 3 for its disjunct JRPG, hip hop themes.</p>
 <p>Persona 5 for its focus on relationships and superb music.</p>
 <p>Skullgirls for its worldbuilding and fantastic music courtesy of Michiru Yamane.</p>
-<h1><a class="header" href="#region-state-protocol" id="region-state-protocol">Region State Protocol</a></h1>
+<h1 id="region-state-protocol"><a class="header" href="#region-state-protocol">Region State Protocol</a></h1>
 <p>The Colosseum region state protocol is made up of two things:</p>
 <ul>
 <li>The region state itself</li>
 <li>Region state actions</li>
 </ul>
-<h2><a class="header" href="#region-state" id="region-state">Region State</a></h2>
+<h2 id="region-state"><a class="header" href="#region-state">Region State</a></h2>
 <p>Region state defines a single instanced region in the game at a specific timestep.
 It's designed in a way such that individual state units can be cascaded across a server array, for the sake of load balancing.</p>
 <p>This instance state in Colosseum defines the following information:</p>
 <ul>
 <li>TODO</li>
 </ul>
-<h2><a class="header" href="#actions" id="actions">Actions</a></h2>
+<h2 id="actions"><a class="header" href="#actions">Actions</a></h2>
 <p>Actions are the individual atomic operations which modify the state, and are dependant upon the context of the state.</p>
 <p>The possible actions are defined as follows:</p>
 <ul>
 <li>TODO</li>
 </ul>
-<h1><a class="header" href="#combat-state-protocol" id="combat-state-protocol">Combat State Protocol</a></h1>
+<h1 id="combat-state-protocol"><a class="header" href="#combat-state-protocol">Combat State Protocol</a></h1>
 <p>The Colosseum combat state protocol is made up of three things:</p>
 <ul>
 <li>The combat state itself</li>
 <li>The local known state</li>
 <li>Combat actions</li>
 </ul>
-<h2><a class="header" href="#combat-state" id="combat-state">Combat State</a></h2>
+<h2 id="combat-state"><a class="header" href="#combat-state">Combat State</a></h2>
 <p>The combat state is the data which represents combat at a specific atomic timestep and encompasses the following information:</p>
 <ul>
 <li>TODO</li>
 </ul>
-<h2><a class="header" href="#local-known-state" id="local-known-state">Local Known State</a></h2>
+<h2 id="local-known-state"><a class="header" href="#local-known-state">Local Known State</a></h2>
 <p>Since an individual player doesn't have a comprehensive picture of the combat state at all times,
 there must exist a protocol for determining what a player does and doesn't know.
 This is required in order to omit data from what a player should have access to,
 such as an opponents health in the event that they shouldn't know it.</p>
 <p>Local known state describes this relationship.</p>
-<h2><a class="header" href="#actions-1" id="actions-1">Actions</a></h2>
+<h2 id="actions-1"><a class="header" href="#actions-1">Actions</a></h2>
 <p>Actions are the individual atomic operations which modify the combat state.</p>
 <p>The possible actions are defined as follows:</p>
 <ul>
@@ -229,21 +229,21 @@ such as an opponents health in the event that they shouldn't know it.</p>
 <li>Skip</li>
 <li>Forfeit</li>
 </ul>
-<h3><a class="header" href="#enter-combat" id="enter-combat">Enter Combat</a></h3>
+<h3 id="enter-combat"><a class="header" href="#enter-combat">Enter Combat</a></h3>
 <p>Enter combat is passed to the state when one or more combatants enters the combat state.
 This is likely to happen at the start of combat, and in the case of expeditions, when a party member joins another in combat.</p>
-<h3><a class="header" href="#exit-combat" id="exit-combat">Exit Combat</a></h3>
+<h3 id="exit-combat"><a class="header" href="#exit-combat">Exit Combat</a></h3>
 <p>Exit combat is passed to the state when one or more combatants exits the combat state.
 This is used in the event that a player disconnects, or during cinematic events such as boss transformations.</p>
-<h3><a class="header" href="#attack" id="attack">Attack</a></h3>
+<h3 id="attack"><a class="header" href="#attack">Attack</a></h3>
 <p>Attack is used when a combatant attempts to use the ability associated with their equipable.
 This will apply their equipable effects to the supplied targets as specified by their equipable.</p>
-<h3><a class="header" href="#ability" id="ability">Ability</a></h3>
+<h3 id="ability"><a class="header" href="#ability">Ability</a></h3>
 <p>Ability is used when a combatant attempts to use an ability that they've acquired.
 This ability will apply its effects to the targets supplied from its own specifications.</p>
-<h3><a class="header" href="#skip" id="skip">Skip</a></h3>
+<h3 id="skip"><a class="header" href="#skip">Skip</a></h3>
 <p>Skip does nothing in itself, but anything which modifies the state with each transformation will apply.</p>
-<h3><a class="header" href="#forfeit" id="forfeit">Forfeit</a></h3>
+<h3 id="forfeit"><a class="header" href="#forfeit">Forfeit</a></h3>
 <p>Forfeit is used when a party decides they want to end the game.
 The forfeiting party loses and the opposing party is given the win.
 The implications of this action are dependant on the context.</p>
